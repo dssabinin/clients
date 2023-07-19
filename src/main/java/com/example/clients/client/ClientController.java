@@ -2,18 +2,18 @@ package com.example.clients.client;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @Api(value = "Клиенты",  tags={"Клиенты"})
 @Slf4j
 @RestController
 @RequestMapping("clients")
+@RequiredArgsConstructor
 public class ClientController {
 
-    @Autowired
-    private ClientService clientService;
+    private final ClientService clientService;
 
     @ApiOperation(value = "Сохранение клиента", response = Long.class)
     @PostMapping("add")
