@@ -9,14 +9,14 @@
     </parent>
     <groupId>com.example</groupId>
     <artifactId>clients</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3-SNAPSHOT</version>
     <name>clients</name>
     <description>clients</description>
 
     <scm>
         <url>https://github.com/dssabinin/clients.git</url>
         <connection>scm:git:https://github.com/dssabinin/clients.git</connection>
-        <tag>0.0.2</tag>
+        <tag>head</tag>
     </scm>
 
     <properties>
