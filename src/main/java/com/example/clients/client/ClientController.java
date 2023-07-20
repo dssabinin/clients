@@ -9,26 +9,27 @@ import org.springframework.web.bind.annotation.*;
 @Api(value = "Клиенты",  tags={"Клиенты"})
 @Slf4j
 @RestController
-@RequestMapping("clients")
+@RequestMapping("")
 @RequiredArgsConstructor
 public class ClientController {
 
     private final ClientService clientService;
 
     @ApiOperation(value = "Сохранение клиента", response = Long.class)
-    @PostMapping("add")
+    @PostMapping("clients")
     public Client createClient(@RequestParam String clientName) {
         return clientService.createClient(clientName);
     }
+
     @ApiOperation(value = "Получение клиента", response = Client.class)
-    @GetMapping("get")
-    public Client getClient(@RequestParam Long clientId) {
-        return clientService.getAllClients(clientId);
+    @GetMapping("clients/{id}")
+    public Client getClient(@PathVariable Long id) {
+        return clientService.getClient(id);
     }
 
     @ApiOperation(value = "Получение клиентов")
-    @GetMapping("get-all")
+    @GetMapping("clients")
     public Iterable<Client> getClients() {
-        return clientService.getAllClients();
+        return clientService.getClient();
     }
 }

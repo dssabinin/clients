@@ -13,11 +13,11 @@ public class ClientService {
         return clientRepo.save(new Client(null, clientName));
     }
 
-    public Client getAllClients(Long clientId) {
+    public Client getClient(Long clientId) {
         return clientRepo.findById(clientId).orElseThrow();
     }
 
-    public Iterable<Client> getAllClients() {
+    public Iterable<Client> getClient() {
         return clientRepo.findAll();
     }
 }
