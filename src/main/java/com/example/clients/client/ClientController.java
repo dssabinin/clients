@@ -16,9 +16,18 @@ public class ClientController {
     private final ClientService clientService;
 
     @ApiOperation(value = "Сохранение клиента", response = Long.class)
-    @PostMapping("clients")
-    public Client createClient(@RequestParam String clientName) {
-        return clientService.createClient(clientName);
+    @PutMapping("clients")
+    public Client putClient(@RequestParam String clientName,
+                               @RequestParam String passportNumber) {
+        return clientService.putClient(clientName, passportNumber);
+    }
+
+    @ApiOperation(value = "Сохранение клиента", response = Long.class)
+    @PutMapping("clients/gift")
+    public Gift putClientGift(@RequestParam String clientName,
+                               @RequestParam String passportNumber,
+                                @RequestParam String orderAddress) {
+        return clientService.putClientGift(clientName, passportNumber, orderAddress);
     }
 
     @ApiOperation(value = "Получение клиента", response = Client.class)

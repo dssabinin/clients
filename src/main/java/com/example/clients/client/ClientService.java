@@ -8,9 +8,13 @@ public class ClientService {
 
     @Autowired
     private ClientRepo clientRepo;
+    @Autowired
+    private Rest rest;
 
-    public Client createClient(String clientName) {
-        return clientRepo.save(new Client(null, clientName));
+    public Client putClient(String clientName, String passportNumber) {
+        Client client = clientRepo.findByPassportNumber(passportNumber).orElse(new Client(null, clientName, passportNumber));
+        client.setName(clientName);
+        return clientRepo.save(client);
     }
 
     public Client getClient(Long clientId) {
@@ -20,4 +24,10 @@ public class ClientService {
     public Iterable<Client> getClient() {
         return clientRepo.findAll();
     }
+
+    public Gift putClientGift(String clientName, String passportNumber, String orderAddress) {
+        Client client = putClient(clientName, passportNumber);
+        return rest.putGift(orderAddress, client);
+    }
+
 }
